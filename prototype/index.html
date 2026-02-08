@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sisu A5 Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">SISU</span>
+        <div>
+          <div class="title">Advanced Prototyping</div>
+          <div class="subtitle">AI-assisted feature improvements</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn" data-screen="front">Front page</button>
+        <button class="nav-btn" data-screen="conflicts">Plan conflicts</button>
+        <button class="nav-btn" data-screen="registration">Registration tasks</button>
+        <button class="nav-btn" data-screen="search">Course search</button>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <section class="screen active" id="screen-front">
+        <div class="screen-header">
+          <div class="breadcrumb">Home / Front page</div>
+          <h1>Student front page</h1>
+          <p class="muted">Quick overview with action-ready tasks.</p>
+          <div class="flow-steps">
+            <span class="step active">Overview</span>
+            <span class="step">Action</span>
+            <span class="step">Confirmation</span>
+          </div>
+        </div>
+
+        <div class="alert warning">
+          <div>
+            <strong>Study plan check:</strong> 2 rule conflicts detected.
+            Fix them to keep your plan valid.
+          </div>
+          <button class="primary" data-nav="conflicts">Resolve conflicts</button>
+        </div>
+
+        <div class="grid cards">
+          <div class="card">
+            <h3>Registration tasks</h3>
+            <p class="muted">3 items need your attention this week.</p>
+            <ul class="mini-list">
+              <li>UI Construction D — deadline in 3 days</li>
+              <li>Entrepreneurship Lab D — waiting for approval</li>
+              <li>AI D — registration opens tomorrow</li>
+            </ul>
+            <button class="primary" data-nav="registration">Review tasks</button>
+          </div>
+          <div class="card">
+            <h3>Progress of studies</h3>
+            <div class="stat-row">
+              <div>
+                <div class="stat">120 cr</div>
+                <div class="muted">Planned</div>
+              </div>
+              <div>
+                <div class="stat">20 cr</div>
+                <div class="muted">Completed</div>
+              </div>
+              <div>
+                <div class="stat">2</div>
+                <div class="muted">Conflicts</div>
+              </div>
+            </div>
+            <button class="ghost" data-nav="conflicts">View conflicts</button>
+          </div>
+          <div class="card">
+            <h3>Latest completed credits</h3>
+            <ul class="mini-list">
+              <li>Digital Business Management D (3 cr)</li>
+              <li>Design of WWW Services D (5 cr)</li>
+              <li>Artificial Intelligence D (5 cr)</li>
+            </ul>
+            <button class="ghost" data-nav="search">Find courses</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-conflicts">
+        <div class="screen-header">
+          <div class="breadcrumb">Home / Plan conflicts</div>
+          <h1>Plan conflicts</h1>
+          <p class="muted">Clear, actionable explanations and one-click fixes.</p>
+          <div class="flow-steps">
+            <span class="step">Overview</span>
+            <span class="step active">Fix conflict</span>
+            <span class="step">Confirmation</span>
+          </div>
+        </div>
+
+        <div class="layout">
+          <div class="panel">
+            <div class="panel-title">Detected conflicts</div>
+            <div class="conflict-list">
+              <div class="conflict-item" data-conflict="entry-year">
+                <div>
+                  <strong>Entry year at Aalto</strong>
+                  <div class="muted">Missing mandatory course: Academic Skills</div>
+                </div>
+                <span class="status danger">Unresolved</span>
+              </div>
+              <div class="conflict-item" data-conflict="innovation">
+                <div>
+                  <strong>Innovation & Entrepreneurship</strong>
+                  <div class="muted">Credits outside structure (15 cr)</div>
+                </div>
+                <span class="status danger">Unresolved</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel detail" id="conflict-detail">
+            <div class="panel-title">Select a conflict</div>
+            <p class="muted">
+              Choose a conflict on the left to see recommended fixes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-registration">
+        <div class="screen-header">
+          <div class="breadcrumb">Home / Registration tasks</div>
+          <h1>Registration tasks</h1>
+          <p class="muted">See deadlines, status, and next action in one place.</p>
+          <div class="flow-steps">
+            <span class="step">Overview</span>
+            <span class="step active">Register</span>
+            <span class="step">Confirmation</span>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab active" data-tab="open">Open</button>
+          <button class="tab" data-tab="waiting">Waiting</button>
+          <button class="tab" data-tab="confirmed">Confirmed</button>
+        </div>
+
+        <div class="tab-content active" id="tab-open">
+          <div class="task-card">
+            <div>
+              <h3>User Interface Construction D</h3>
+              <p class="muted">Registration ends in 3 days (23:59).</p>
+            </div>
+            <button class="primary register-btn">Register</button>
+          </div>
+          <div class="task-card">
+            <div>
+              <h3>Artificial Intelligence D</h3>
+              <p class="muted">Registration opens tomorrow at 08:00.</p>
+            </div>
+            <button class="ghost disabled">Not open yet</button>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-waiting">
+          <div class="task-card">
+            <div>
+              <h3>Entrepreneurship Lab D</h3>
+              <p class="muted">Waiting for approval, expected in 2 days.</p>
+            </div>
+            <button class="ghost disabled">Waiting</button>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-confirmed">
+          <div class="task-card empty">
+            <p class="muted">No confirmed registrations yet.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-search">
+        <div class="screen-header">
+          <div class="breadcrumb">Home / Course search</div>
+          <h1>Course search</h1>
+          <p class="muted">Simplified filters with instant feedback.</p>
+          <div class="flow-steps">
+            <span class="step active">Search</span>
+            <span class="step">Preview</span>
+            <span class="step">Add & resolve</span>
+          </div>
+        </div>
+
+        <div class="search-card">
+          <label class="field">
+            <span>Search by course title or code</span>
+            <input id="search-input" type="text" placeholder="Try “UI Construction”" />
+          </label>
+          <div id="suggestions" class="suggestions hidden"></div>
+
+          <div class="filters">
+            <label class="chip">
+              <input type="checkbox" checked /> Registration open
+            </label>
+            <label class="chip">
+              <input type="checkbox" /> Period I–II
+            </label>
+            <label class="chip">
+              <input type="checkbox" /> 5 cr
+            </label>
+            <label class="chip">
+              <input type="checkbox" /> English
+            </label>
+          </div>
+
+          <div class="search-actions">
+            <button class="primary" id="search-btn">Search</button>
+            <button class="ghost" id="clear-btn">Clear</button>
+            <span id="search-status" class="muted" role="status" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <div id="results-empty" class="empty-state hidden">
+          <div class="panel-title">No results</div>
+          <p class="muted">
+            Try a broader keyword or remove filters like “Registration open”.
+          </p>
+        </div>
+
+        <div id="search-results" class="results hidden">
+          <div class="results-list">
+            <div class="result-card">
+              <div>
+                <h3>User Interface Construction D (5 cr)</h3>
+                <p class="muted">Period II · Registration open</p>
+              </div>
+              <div class="result-actions">
+                <button class="ghost preview-btn">Preview in plan</button>
+                <button class="primary add-btn">Add to plan</button>
+              </div>
+            </div>
+            <div class="result-card">
+              <div>
+                <h3>Emergent User Interfaces D (5 cr)</h3>
+                <p class="muted">Period III · Registration open</p>
+              </div>
+              <div class="result-actions">
+                <button class="ghost preview-btn">Preview in plan</button>
+                <button class="primary add-btn">Add to plan</button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="preview" id="plan-preview">
+            <div class="panel-title">Plan preview</div>
+            <p class="muted">Select a course to preview scheduling.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite">
+      Saved
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
